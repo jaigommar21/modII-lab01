@@ -25,10 +25,11 @@ public class ConsultarRegistrosJDBC {
 
 			// Preparar la sentencia SQL
 			//String sql = "SELECT * FROM categorias ";
-			String sql = "SELECT * FROM categorias WHERE id = ? ";
+			String sql = "SELECT * FROM categorias WHERE id = ? AND nombre = ? ";
 			
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setInt(1, 1);
+			stmt.setInt(1, 2);             // posicion 1
+			stmt.setString(2, "Memorias"); // posicion 2
 			
 			ResultSet rs = stmt.executeQuery();
 			
