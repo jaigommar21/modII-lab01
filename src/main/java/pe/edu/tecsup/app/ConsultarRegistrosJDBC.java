@@ -36,7 +36,7 @@ public class ConsultarRegistrosJDBC {
 			while (rs.next()) {
 				int id = rs.getInt("id");
 				String nombre = rs.getString("nombre");
-				System.out.printf("id = %d , nombre=%s \n", id, nombre);
+				System.out.printf(">> id = %d , nombre=%s \n", id, nombre);
 			}
 			 
 			rs.close(); 
