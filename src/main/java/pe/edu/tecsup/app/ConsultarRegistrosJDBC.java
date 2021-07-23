@@ -7,8 +7,11 @@ import java.sql.ResultSet;
 
 public class ConsultarRegistrosJDBC {
 
-	public static String URL = "jdbc:mysql://localhost/almacen?useSSL=false";
+	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
+	public static String URL = "jdbc:mysql://localhost/inventariodb2?useSSL=false";
+	
 	public static String USERNAME = "root";
+	
 	public static String PASSWORD = "";
 	
 	public static void main(String[] args) {
