@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 public class ConsultarRegistrosJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
-	public static String URL = "jdbc:mysql://localhost/inventariodb2?useSSL=false";
+	public static String URL = "jdbc:mysql://192.168.64.2/inventariodb?useSSL=false";
 	
-	public static String USERNAME = "root";
+	public static String USERNAME = "tecsup";
 	
-	public static String PASSWORD = "";
+	public static String PASSWORD = "tecsup";
 	
 	public static void main(String[] args) {
 		
@@ -24,8 +24,12 @@ public class ConsultarRegistrosJDBC {
 			Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
 
 			// Preparar la sentencia SQL
-			String sql = "select * from categorias";
+			//String sql = "SELECT * FROM categorias ";
+			String sql = "SELECT * FROM categorias WHERE id = ? ";
+			
 			PreparedStatement stmt = con.prepareStatement(sql);
+			stmt.setInt(1, 1);
+			
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
@@ -35,7 +39,9 @@ public class ConsultarRegistrosJDBC {
 			}
 			
 			rs.close();
+			
 			stmt.close();
+			
 			con.close();
 			
 		} catch (Exception e) {
