@@ -38,7 +38,7 @@ public class ConsultarRegistrosJDBC {
 				String nombre = rs.getString("nombre");
 				System.out.printf("id = %d , nombre=%s \n", id, nombre);
 			}
-			
+			 
 			rs.close(); 
 			
 			stmt.close();
