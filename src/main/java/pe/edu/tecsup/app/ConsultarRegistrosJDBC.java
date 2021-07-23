@@ -39,7 +39,7 @@ public class ConsultarRegistrosJDBC {
 				System.out.printf("id = %d , nombre=%s \n", id, nombre);
 			}
 			
-			rs.close();
+			rs.close(); 
 			
 			stmt.close();
 			
