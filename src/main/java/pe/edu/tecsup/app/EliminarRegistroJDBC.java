@@ -29,7 +29,7 @@ public class EliminarRegistroJDBC {
 			PreparedStatement stmt = con.prepareStatement(sql);
 			
 			// Configura el PK del registro a eliminar
-			stmt.setInt(1, 10);
+			stmt.setInt(1, 4); // EL registro con ID igual a 4 existe
 			
 			// Ejecutar la insercion
 			int estado = stmt.executeUpdate(); 
