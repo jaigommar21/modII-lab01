@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class InsertarRegistrosJDBC {
+public class InsertarRegistroJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
 	public static String URL = "jdbc:mysql://192.168.64.2/inventariodb?useSSL=false";
