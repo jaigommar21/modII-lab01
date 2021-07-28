@@ -27,16 +27,18 @@ public class ActualizarRegistroJDBC {
 			// Preparar la sentencia SQL
 			String sql = "UPDATE categorias SET nombre=? WHERE id=?"; 
 			PreparedStatement stmt = con.prepareStatement(sql);
-			int id = 11; // PK del registro que se va a cambiar
+			int id = 4; // PK del registro que se va a cambiar
 			
 			// Configura el PK del registro a eliminar
-			stmt.setString(1, "Nombre Cambiado"); 
+			stmt.setString(1, "Portatiles Cambiado"); 
 			stmt.setInt(2, id);
 			
 			// Ejecutar la actualizacion
 			int estado = stmt.executeUpdate(); 
+			
+			// Verificar el cambio
 			if (estado != 1)
-				throw new SQLException("No se pudo actualizar"); 
+				throw new SQLException("No se pudo actualizar correctamente"); 
 			
 			System.out.printf("Se actualiza la categoria con id = %d \n", id);
 			
