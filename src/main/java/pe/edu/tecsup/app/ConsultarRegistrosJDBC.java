@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 public class ConsultarRegistrosJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
-	public static String URL = "jdbc:mysql://192.168.64.2/almacen?useSSL=false";
+	public static String URL = "jdbc:mysql://localhost/almacen?useSSL=false";
 	
-	public static String USERNAME = "tecsup";
+	public static String USERNAME = "root";
 	
-	public static String PASSWORD = "tecsup";
+	public static String PASSWORD = "";
 	
 	public static void main(String[] args) {
 		
@@ -32,15 +32,15 @@ public class ConsultarRegistrosJDBC {
 						
 			
 			// Preparar la sentencia SQL
-			//String sql = "SELECT id, nombre FROM categorias";
+			String sql = "SELECT id, nombre, descripcion FROM categorias";
 			
 			//                                                         1              2 
-			String sql = "SELECT id, nombre FROM categorias WHERE id = ? AND nombre = ? ";
+			//String sql = "SELECT id, nombre FROM categorias WHERE id = ? AND nombre = ? ";
 			
 			PreparedStatement stmt = con.prepareStatement(sql);
 			//        ( posicion del signo interrogacion, valor que quieres asignar)
-			stmt.setInt(1, 1);               // posicion del 1er signo de interrogacion
-			stmt.setString(2, "Procesador"); // posicion del 2do signo de interrogacion
+			//stmt.setInt(1, 1);               // posicion del 1er signo de interrogacion
+			//stmt.setString(2, "Procesador"); // posicion del 2do signo de interrogacion
 			
 			
 			ResultSet rs = stmt.executeQuery();
@@ -50,8 +50,10 @@ public class ConsultarRegistrosJDBC {
 				int id = rs.getInt("id");
 				
 				String nombre = rs.getString("nombre");
-								
-				System.out.printf(">>> id = %d , nombre=%s \n", id, nombre);
+
+				String descripcion = rs.getString("descripcion");
+
+				System.out.printf(">>> id = %d , nombre=%s, descripcion=%s \n", id, nombre, descripcion);
 			}
 			
 			rs.close(); 

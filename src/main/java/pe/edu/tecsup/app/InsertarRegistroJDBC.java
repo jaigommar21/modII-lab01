@@ -22,17 +22,21 @@ public class InsertarRegistroJDBC {
 			
 			// Conectarme a la BD
 			Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
 			
 			// Preparar la sentencia SQL
 			String sql = "INSERT INTO categorias (nombre,descripcion,orden) VALUES (?,?,?)";
+			
 			PreparedStatement stmt = con.prepareStatement(sql);
+			
 		    // Preparar los datos a Ingresar
-			stmt.setString(1, "Portatiles");  // corresponde al nombre
+			stmt.setString(1, "Portatiles");              // corresponde al nombre
 			stmt.setString(2, "Portatiles de Gama Alta"); // corresponde a la descripcion
-			stmt.setInt(3, 4); // corresponde al orden
+			stmt.setInt(3, 4);                            // corresponde al orden
+			
+			
 			// Ejecutar la insercion
 			int estado = stmt.executeUpdate(); 
+			
 			// Analizar el resultado
 			if (estado != 1)
 				throw new SQLException("No se pudo insertar");
@@ -50,8 +54,12 @@ public class InsertarRegistroJDBC {
 			
 			// Cerrar conexiones
 			//rs.close(); 
+			
 			stmt.close();
+			
 			con.close();
+			
+			System.out.println("Registro creado");
 			
 		} catch (Exception e) {
 			e.printStackTrace();
