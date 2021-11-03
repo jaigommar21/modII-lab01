@@ -54,7 +54,7 @@ public class ConsultarRegistrosJDBC {
 				String descripcion = rs.getString("descripcion");
 
 				System.out.printf(">>> id = %d , nombre=%s, descripcion=%s \n", id, nombre, descripcion);
-				System.out.println(">>> id = " + id + ", nombre=" +nombre + ", descripcion="+ descripcion + " \n");
+				System.out.println(">>> id = " + id + ", nombre=" +nombre + ", descripcion="+ descripcion );
 			}
 			
 			rs.close(); 
