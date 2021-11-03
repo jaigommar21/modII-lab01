@@ -8,11 +8,11 @@ import java.sql.ResultSet;
 public class ConsultarRegistrosJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
-	public static String URL = "jdbc:mysql://localhost/almacen?useSSL=false";
+	public static String URL = "jdbc:mysql://192.168.64.2/almacen?useSSL=false";
 	
-	public static String USERNAME = "root";
+	public static String USERNAME = "tecsup";
 	
-	public static String PASSWORD = "";
+	public static String PASSWORD = "tecsup";
 	
 	public static void main(String[] args) {
 		
@@ -54,7 +54,9 @@ public class ConsultarRegistrosJDBC {
 				String descripcion = rs.getString("descripcion");
 
 				System.out.printf(">>> id = %d , nombre=%s, descripcion=%s \n", id, nombre, descripcion);
-				System.out.println(">>> id = " + id + ", nombre=" +nombre + ", descripcion="+ descripcion );
+				
+				//System.out.println(">>> id = " + id + ", nombre=" +nombre + ", descripcion="+ descripcion );
+			
 			}
 			
 			rs.close(); 

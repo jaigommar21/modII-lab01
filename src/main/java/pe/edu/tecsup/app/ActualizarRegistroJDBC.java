@@ -8,7 +8,7 @@ import java.sql.SQLException;
 public class ActualizarRegistroJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
-	public static String URL = "jdbc:mysql://192.168.64.2/inventariodb?useSSL=false";
+	public static String URL = "jdbc:mysql://192.168.64.2/almacen?useSSL=false";
 	
 	public static String USERNAME = "tecsup";
 	
@@ -25,8 +25,9 @@ public class ActualizarRegistroJDBC {
 
 			// Preparar la sentencia SQL
 			String sql = "UPDATE categorias SET nombre=? WHERE id=?"; 
+			
 			PreparedStatement stmt = con.prepareStatement(sql);
-			int id = 4; // PK del registro que se va a cambiar
+			int id = 5; // PK del registro que se va a cambiar
 			
 			// Configura el PK del registro a eliminar
 			stmt.setString(1, "Portatiles Cambiado"); 
@@ -34,6 +35,7 @@ public class ActualizarRegistroJDBC {
 			
 			// Ejecutar la actualizacion
 			int estado = stmt.executeUpdate(); 
+			System.out.println(estado);
 			
 			// Verificar el cambio
 			if (estado != 1)
