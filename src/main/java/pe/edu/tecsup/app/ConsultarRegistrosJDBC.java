@@ -8,7 +8,7 @@ import java.sql.ResultSet;
 public class ConsultarRegistrosJDBC {
 
 	// ENGINE : MYSQL  [jdbc:<<engine>>:<<port>>//<<IP o DOMINIO >>/<<SCHEMA>>?<<PARAMETROS OPCIONALES>> ]
-	public static String URL = "jdbc:mysql://192.168.64.2/inventariodb?useSSL=false";
+	public static String URL = "jdbc:mysql://192.168.64.2/almacen?useSSL=false";
 	
 	public static String USERNAME = "tecsup";
 	
@@ -17,28 +17,43 @@ public class ConsultarRegistrosJDBC {
 	public static void main(String[] args) {
 		
 		try {
+			
 			// Cargar el driver
 			Class.forName("com.mysql.jdbc.Driver");
 			
+			
 			// Conectarme a la BD
 			Connection con = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-
+			
+			//Connection con 
+			//	= DriverManager.getConnection("jdbc:mysql://192.168.64.2/almacen?useSSL=false",  // CADENA CONEXION
+			//								  "tecsup",        // USUARIO
+			//								  "tecsup");       // CLAVE
+						
+			
 			// Preparar la sentencia SQL
-			//String sql = "SELECT * FROM categorias ";
-			String sql = "SELECT * FROM categorias WHERE id = ? AND nombre = ? ";
+			//String sql = "SELECT id, nombre FROM categorias";
+			
+			//                                                         1              2 
+			String sql = "SELECT id, nombre FROM categorias WHERE id = ? AND nombre = ? ";
 			
 			PreparedStatement stmt = con.prepareStatement(sql);
-			stmt.setInt(1, 2);             // posicion 1
-			stmt.setString(2, "Memorias"); // posicion 2
+			//        ( posicion del signo interrogacion, valor que quieres asignar)
+			stmt.setInt(1, 1);               // posicion del 1er signo de interrogacion
+			stmt.setString(2, "Procesador"); // posicion del 2do signo de interrogacion
+			
 			
 			ResultSet rs = stmt.executeQuery();
 			
 			while (rs.next()) {
+				
 				int id = rs.getInt("id");
+				
 				String nombre = rs.getString("nombre");
+								
 				System.out.printf(">>> id = %d , nombre=%s \n", id, nombre);
 			}
-			 
+			
 			rs.close(); 
 			
 			stmt.close();
